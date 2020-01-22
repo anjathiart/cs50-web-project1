@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{% block heading %}{% endblock %}</title>
+	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+     <link rel="stylesheet" type="text/css" href="static/style.css">
+</head>
+<body>
+	<!--NAVIGATION-->
+	<nav class="nav justify-content-end">
+		<a class="nav-link {% block nav_login %}{% endblock %}" href="{{ url_for('index') }}">Login</a>
+		<a class="nav-link {% block nav_signup %}{% endblock %}" href="{{ url_for('signup') }}">Signup</a>
+		<a class="nav-link {% block nav_logout %}{% endblock %}" href="login.html">Logout</a>
+	</nav>
+
+	<div class="container">
+		{% block content %}{% endblock %}
+	</div>
+	<footer>Copyright &copy Short Shift Productions 2020 | Anja Thiart | anjathiart@gmail.com</footer>
+</body>
+</html>

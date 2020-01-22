@@ -1,0 +1,65 @@
+
+
+.hidden {
+	display: none;
+}
+
+.active {
+	color: navy !important;
+}
+
+footer {
+	width: 100%;
+	text-align: center;
+	font-size: 0.65rem;
+	letter-spacing: 0.2rem;
+	position: fixed;
+	bottom: 0;
+	padding-bottom: 0.4rem;
+	padding-top: 0.4rem;
+	background-color: invert(rgba(lime, 0.1));
+}
+
+.nav {
+	background-color: rgba(lime, 0.1);
+	padding-right: 4rem;
+}
+
+.nav-link {
+	color: purple;
+}
+
+.navbar-brand {
+	justify-self: flex-start;
+}
+
+.container {
+	width: 40%;
+	padding: 7%;
+}
+
+body{
+	height: 100vh;
+	background-color: rgba(violet,0.2);
+	background-size: cover;
+	background-image: linear-gradient(rgba(purple,0.2), rgba(yellow,0.4));
+}
+
+.btn {
+	background-color: violet;
+	border-color: violet;
+	color: white;
+	font-weight: 400;
+	&:hover {
+		background-color: rgba(purple,0.4);
+		border-color: rgba(purple,0.4);
+	}
+}
+
+label {
+	color: rgba(purple,1);
+	color: navy !important;
+	
+}
+
+
