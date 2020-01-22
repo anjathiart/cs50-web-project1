@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+    Home
+{% endblock %}
+
+{% block nav_signup %}hidden{% endblock %}
+{% block nav_login %}hidden{% endblock %}
+{% block nav_logout %}active{% endblock %}
+
+
+{% block content %}
+	<section id="book-details">
+		<h1>{{ book_details.title }}</h1>
+		<p class="d-flex justify-content-between align-items-center"><span>Author: {{ book_details.name}}</span><small><strong>ISBN:</strong> {{ book_details.isbn }}</small></p>
+		{% if goodreads_data %}
+			<p><small>This book has an average rating of {{goodreads_data.average_score}} and a total of {{ goodreads_data.reviews_count}} reviews on Goodreads</small></p>
+		{% else %}
+			<p><small>No Goodreads data available<small></p>
+		{% endif %}
+	</section>
+
+
+	<form method="post" action="{{ url_for('review', book_id=book_details.id) }}">
+		<div class="form-group">
+			<textarea class="form-control" name="review" rows="3" placeholder="Write your review here..." required></textarea>
+		</div>
+		<div class="form-group row">
+			<label for="score" class="col-sm-2 col-form-label">Score out of 5</label>
+			<input type="number" name="score" class="col-sm-1" required max="5", min="1">
+			<!--<div class="col-sm-1">
+	    		<select class="form-control" name="score" id="score" required>
+					<option>1</option>
+					<option>2</option>
+					<option>3</option>
+					<option>4</option>
+					<option>5</option>
+				</select>
+			</div>-->
+			<button type="submit" class="btn btn-primary ml-auto">Submit Review</button>
+		</div>
+	</form>
+
+	<section id="reviews">
+	</section>
+
+{% endblock %}

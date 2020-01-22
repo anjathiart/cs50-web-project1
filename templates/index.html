@@ -1,22 +1,32 @@
 {% extends "layout.html" %}
 
 {% block heading %}
-    Login
+    Home
 {% endblock %}
 
-{% block nav_login %}active{% endblock %}
-{% block nav_logout %}hidden{% endblock %}
+{% block nav_signup %}hidden{% endblock %}
+{% block nav_login %}hidden{% endblock %}
+{% block nav_logout %}active{% endblock %}
+
 
 {% block content %}
-	<form class="needs-validation" novalidate>
+	<form class="needs-validation" novalidate action="{{ url_for('search') }}" method="post">
 		<div class="form-group">
-			<label for="email">Email address</label>
-			<input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+			<label for="search">Search for a book</label>
+			<input type="text" class="form-control" name="search_text" id="search"  placeholder="Search...">
+			<p>Type in the ISBN, author name, title, or part thereof and hit search</p>
  		</div>
-		<div class="form-group">
-			<label for="password">Password</label>
-			<input type="password" class="form-control" id="password" placeholder="Password">
-		</div>
-		<button type="submit" class="btn btn-primary">Login</button>
+		<button type="submit" class="btn btn-primary">Search</button>
 	</form>
+
+	{% if search_results %}
+		{% for book in search_results %}
+			<div class="book_result">
+				<a href="{{ url_for('books', book_id = book.id) }}">{{ book.title }}</a>
+				<small>By: {{ book.name }}</small>
+				<small>ISBN: {{ book.isbn }}</small>
+			</div>
+		{% endfor %}
+	{% endif %}
+
 {% endblock %}
